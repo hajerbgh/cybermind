@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "id": "92213",
+    "level": 12,
+    "description": "Executable file dropped in folder commonly used by malware",
+    "mitre": {
+      "id": ["T1105"],
+      "tactic": ["Command and Control"],
+      "technique": ["Ingress Tool Transfer"]
+    }
+  },
+  "agent": { "name": "WIN11-LAB" },
+  "data": {
+    "win": {
+      "system": { "eventID": "1" },
+      "eventdata": {
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "parentImage": "C:\\Windows\\System32\\cmd.exe",
+        "commandLine": "powershell.exe Invoke-WebRequest -Uri https://example.com/test.txt -OutFile $env:TEMP\\test.txt"
+      }
+    }
+  }
+}
